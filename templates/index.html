@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Numadic Vehicles Info</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<script>
+
+    function downloadExcel(){
+        var st_time = $('#text1').val();
+        var end_time = $('#text2').val();
+        
+        $.ajax({
+              url: "/getVehicleInfo",
+              type: "GET",
+              data: {st_time:st_time,
+              end_time:end_time},
+              success: function(data){
+                alert(data['result']['result'])
+              }
+        })
+        //   }).done(function(response) {
+        //     var html= "<br><br><br><p> <b> RESULT : <b><p>";
+        //     response =response.result;
+        //     console.log(response)
+
+        //     });
+            
+    }
+
+</script>
+<body>
+    <p>
+        Start Time<input type="text" id="text1" name="text1"><br><br>
+        End Time<input type="text" id="text2" name="text2"><br><br>
+        <button id="clicked" onclick="downloadExcel()">Submit</button>
+    </p>
+</body>
+</html>
